@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
-    <p>{{text[selectedLanguage].hello}}</p>
-    <p>{{text[selectedLanguage].bye}}</p>
-    <button @click="selectedLanguage='en'">English</button>
-    <button @click="selectedLanguage='ru'">Русский</button>
+    <p>{{ text[selectedLanguage].hello }}</p>
+    <p>{{ text[selectedLanguage].bye }}</p>
+    <button @click="selectedLanguage = 'en'">English</button>
+    <button @click="selectedLanguage = 'ru'">Русский</button>
   </div>
 </template>
 
@@ -13,22 +13,21 @@ export default {
   props: {
     msg: String,
   },
-  data(){
-    return{
-      selectedLanguage:'en',
-      text:{
-        en:{
-          hello:"Hello",
-          bye:"Bye"
+  data() {
+    return {
+      selectedLanguage: "en",
+      text: {
+        en: {
+          hello: "Hello",
+          bye: "Bye",
         },
-        ru:{
-          hello:"Привет",
-          bye:"Пока-пока"
-        }
-
-      }
-    }
-  }
+        ru: {
+          hello: "Привет",
+          bye: "Пока-пока",
+        },
+      },
+    };
+  },
 };
 </script>
 
