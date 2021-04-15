@@ -1,6 +1,8 @@
 {
-  "cat": "Cat",
+  "cat": "Cat {name}",
   "dog": "Dog",
   "horse": "Horse",
-  "crocodile":"Crocodile"
+  "crocodile":"Crocodile",
+  "email":"Write me: {email}",
+  "person":"Person | {count} People"
 }
