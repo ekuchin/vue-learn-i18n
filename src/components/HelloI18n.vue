@@ -1,8 +1,12 @@
 <template>
-  <p>{{ t("hello") }}</p>
 
-  <p>{{ t("message") }}</p>
-
+  <p>{{ t("cat") }}</p>
+  <p>{{ t("dog") }}</p>
+  <p>{{ t("horse") }}</p>
+  <p>{{ t("crocodile") }}</p>
+  
+    <button @click="locale='en'">English</button>
+    <button @click="locale='ru'">Русский</button>
 
 </template>
 
@@ -13,22 +17,13 @@ import { useI18n } from "vue-i18n";
 export default defineComponent({
   name: "HelloI18n",
   setup() {
-    const { t } = useI18n({
+    const { t, locale } = useI18n({
+      locale:'en',
       inheritLocale: true,
-      useScope: "local",
+      useScope: "global",
     });
 
-    // Something todo ..
-
-    return { t };
+    return { t, locale };
   },
 });
 </script>
-
-<i18n>
-{
-  "en": {
-    "hello": "Hello i18n in SFC!"
-  }
-}
-</i18n>
