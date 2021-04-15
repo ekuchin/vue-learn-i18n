@@ -5,8 +5,8 @@
   <p>{{ t("horse") }}</p>
   <p>{{ t("crocodile") }}</p>
   
-    <button @click="locale='en'">English</button>
-    <button @click="locale='ru'">Русский</button>
+    <button @click="setLocale('en')">English</button>
+    <button @click="setLocale('ru')">Русский</button>
 
 </template>
 
@@ -17,13 +17,23 @@ import { useI18n } from "vue-i18n";
 export default defineComponent({
   name: "HelloI18n",
   setup() {
+    
     const { t, locale } = useI18n({
-      locale:'en',
       inheritLocale: true,
       useScope: "global",
     });
 
-    return { t, locale };
+    const setLocale = (code) =>{
+      locale.value = code
+      localStorage.setItem("locale",code)
+    }
+
+    locale.value = localStorage.getItem("locale")
+    if (!locale.value){
+      setLocale(navigator.language)
+    }
+
+    return { t, locale, setLocale };
   },
 });
 </script>
