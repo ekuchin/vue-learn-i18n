@@ -9,6 +9,9 @@
   <p>{{ t("person", 1) }}</p>
   <p>{{ t("person", 2) }}</p>
 
+  <p>{{ d(new Date(), "long", locale) }}</p>
+  <p>{{ n(1000, "currency", locale) }}</p>
+
   <button @click="setLocale('en')">English</button>
   <button @click="setLocale('ru')">Русский</button>
 </template>
@@ -20,7 +23,7 @@
   export default defineComponent({
     name: "HelloI18n",
     setup() {
-      const { t, tc, locale } = useI18n({
+      const { t, tc, d, n, locale } = useI18n({
         inheritLocale: true,
         useScope: "global",
       });
@@ -37,7 +40,7 @@
         setLocale(navigator.language);
       }
 
-      return { t, tc, locale, setLocale, email };
+      return { t, tc, d, n, locale, setLocale, email };
     },
   });
 </script>

@@ -19,9 +19,45 @@ function loadLocaleMessages() {
   return messages;
 }
 
+const datetimeFormats = {
+  'en': {
+    short: {
+      year: 'numeric', month: 'short', day: 'numeric'
+    },
+    long: {
+      year: 'numeric', month: 'short', day: 'numeric',
+      weekday: 'short', hour: 'numeric', minute: 'numeric',hour12: true
+    }
+  },
+  'ru': {
+    short: {
+      year: 'numeric', month: 'short', day: 'numeric'
+    },
+    long: {
+      year: 'numeric', month: 'short', day: 'numeric',
+      weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false
+    }
+  }
+}
+
+const numberFormats = {
+  'en': {
+    currency: {
+      style: 'currency', currency: 'USD'
+    }
+  },
+  'ru': {
+    currency: {
+      style: 'currency', currency: 'RUR', currencyDisplay: 'symbol'
+    }
+  }
+}
+
+
 export default createI18n({
   legacy: false,
   locale: process.env.VUE_APP_I18N_LOCALE || "en",
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "en",
   messages: loadLocaleMessages(),
+  datetimeFormats , numberFormats
 });
